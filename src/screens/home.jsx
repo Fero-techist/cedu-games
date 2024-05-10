@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
-import Element from "../assets/Element.png";
+import Frame from "../assets/hero.png";
+import Frames from "../assets/Frame92.png";
 import OurClients from "../components/our-clients/OurClients";
 
 const Home = () => {
@@ -14,9 +15,10 @@ const Home = () => {
         <Navbar />
       </div>
       <div
-        className=" bg-no-repeat bg-cover bg-center bg-gradient-to-b from-[#5608D4] to-[#384295] lg:flex md:grid grid justify-center lg:pl-24 lg:pr-0 md:px-10 px-8 py-10"
+        className=" bg-no-repeat  bg-cover  lg:flex md:grid grid justify-center lg:pl-24 lg:pr-0 md:px-10 px-8 py-10"
         style={{
-          backgroundImage: `url(${Element})`,
+          backgroundImage: `url(${Frame})`,
+          backgroundSize: "150%, 150%",
         }}
       >
         <div className=" lg:w-1/2 md:w-full w-full space-y-5 pt-10">
@@ -58,6 +60,14 @@ const Home = () => {
           <OurClients />
         </div>
       </div>
+
+      <div
+        className=" bg-no-repeat bg-cover h-[200px]"
+        style={{
+          backgroundImage: `url(${Frames})`,
+          backgroundSize: "150%, 150%",
+        }}
+      ></div>
     </div>
   );
 };
