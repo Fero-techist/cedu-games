@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
-import Elementss from "../assets/Elementss.png";
+import Element from "../assets/Element.png";
 import OurClients from "../components/our-clients/OurClients";
 
 const Home = () => {
@@ -15,9 +15,9 @@ const Home = () => {
       </div>
       <div
         className=" bg-no-repeat bg-cover bg-center bg-gradient-to-b from-[#5608D4] to-[#384295] lg:flex md:grid grid justify-center lg:pl-24 lg:pr-0 md:px-10 px-8 py-10"
-        // style={{
-        //   backgroundImage: `url(${Elementss})`,
-        // }}
+        style={{
+          backgroundImage: `url(${Element})`,
+        }}
       >
         <div className=" lg:w-1/2 md:w-full w-full space-y-5 pt-10">
           <div>
