@@ -62,12 +62,17 @@ const Home = () => {
       </div>
 
       <div
-        className=" bg-no-repeat bg-cover h-[200px]"
+        className=" bg-no-repeat bg-cover lg:px-24 md:px-10 px-8 py-10"
         style={{
           backgroundImage: `url(${Frames})`,
           backgroundSize: "150%, 150%",
         }}
-      ></div>
+      >
+        <p className=" font-Kumbh font-bold lg:text-[40px] md:text-[40px] text-[38px]">
+          How It Works
+        </p>
+        <div className=" w-52 h-auto"></div>
+      </div>
     </div>
   );
 };
