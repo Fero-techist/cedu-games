@@ -105,7 +105,7 @@ const Home = () => {
           backgroundImage: `url(${Frames})`,
         }}
       >
-        <p className=" font-Kumbh font-bold lg:text-[40px] md:text-[40px] text-[38px]">
+        <p className=" font-Kumbh font-bold lg:text-[40px] md:text-[40px] text-[36px]">
           How It Works
         </p>
         <div className=" flex flex-wrap lg:justify-between md:justify-between justify-center gap-10">
@@ -131,6 +131,123 @@ const Home = () => {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/*  */}
+      <div className=" pt-16 lg:px-24 md:px-10 px-8">
+        <div className=" grid justify-center items-center gap-3">
+          <p className=" text-center font-bold lg:text-4xl md:text-4xl text-3xl font-Kumbh">
+            One Platform, Multiple Services
+          </p>
+          <p className=" font-Kumbh text-center lg:text-2xl md:text-2xl text-xl w-[787px]">
+            Simplifying Human Resource Management, Your One-Stop Shop for HR
+            Management
+          </p>
+        </div>
+
+        <div className=" flex justify-center mt-8">
+          {/*  */}
+          <div className=" w-3/4">
+            <img src={require("../assets/Group7.png")} alt="" />
+
+            <div className=" flex justify-between">
+              {/*  */}
+              <div className=" w-60 space-y-5">
+                <div className=" grid justify-center items-center ">
+                  <img
+                    className=" w-36 h-36"
+                    src={require("../assets/job3.png")}
+                    alt=""
+                  />
+                </div>
+                <p className=" text-center Satoshi text-base text-[#333] font-bold">
+                  Employee Management
+                </p>
+                <p className=" text-center font-Nunito text-sm text-[#4F4F4F]">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.{" "}
+                </p>
+              </div>
+              {/*  */}
+              <div className=" w-72 space-y-5 mt-36">
+                <div className=" grid justify-center items-center ">
+                  <img
+                    className=" w-36 h-36"
+                    src={require("../assets/job4.png")}
+                    alt=""
+                  />
+                </div>
+                <p className=" text-center Satoshi text-base text-[#333] font-bold">
+                  Task Management & Time Tracking
+                </p>
+                <div className=" flex justify-center ">
+                  <p className=" text-center font-Nunito text-sm text-[#4F4F4F]">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.{" "}
+                  </p>
+                </div>
+              </div>
+              {/*  */}
+              <div className=" w-72 space-y-5 mt-28">
+                <div className=" grid justify-center items-center ">
+                  <img
+                    className=" w-36 h-36"
+                    src={require("../assets/job5.png")}
+                    alt=""
+                  />
+                </div>
+                <p className=" text-center Satoshi text-base text-[#333] font-bold">
+                  Attendance management
+                </p>
+                <div className=" flex justify-center ">
+                  <p className=" text-center font-Nunito text-sm text-[#4F4F4F]">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.{" "}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className=" w-1/3 grid justify-center ">
+            <div className=" w-60 space-y-5">
+              <div className=" grid justify-center items-center ">
+                <img
+                  className=" w-36 h-36"
+                  src={require("../assets/job1.png")}
+                  alt=""
+                />
+              </div>
+              <p className=" text-center Satoshi text-base text-[#333] font-bold">
+                Recruitment & Jobs
+              </p>
+              <p className=" text-center font-Nunito text-sm text-[#4F4F4F]">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.{" "}
+              </p>
+            </div>
+            <div className=" w-60 space-y-5 lg:relative lg:top-[-100px]">
+              <div className=" grid justify-center items-center ">
+                <img
+                  className=" w-36 h-36"
+                  src={require("../assets/job2.png")}
+                  alt=""
+                />
+              </div>
+              <p className=" text-center Satoshi text-base text-[#333] font-bold">
+                Payroll management
+              </p>
+              <p className=" text-center font-Nunito text-sm text-[#4F4F4F]">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry.{" "}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className=" grid justify-center items-center">
+          <button className=" border border-[#5608D4] w-64 h-16 mt-10 rounded-full text-[See more features] font-Nunito text-base">
+            See more features
+          </button>
         </div>
       </div>
     </div>

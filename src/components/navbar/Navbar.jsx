@@ -36,11 +36,11 @@ const Navbar = () => {
           Request for a demo
         </button>
       </div>
-      <div onClick={handleToggle} className=" lg:hidden md:block block">
-        <GiHamburgerMenu />
+      <div className=" lg:hidden md:block block">
+        <GiHamburgerMenu onClick={handleToggle} />
       </div>
       {isToggle && (
-        <div className=" grid absolute top-20 bg-gradient-to-b from-[#5608D4] to-[#384295] w-full p-5 space-y-10 ">
+        <div className=" grid absolute z-30 top-20 bg-gradient-to-b from-[#5608D4] to-[#384295] w-full p-5 space-y-10 ">
           <ul className=" lg:hidden md:hidden grid items-center gap-5">
             <Link to="/home" className=" Satoshi font-thin text-sm text-[#fff]">
               Home
