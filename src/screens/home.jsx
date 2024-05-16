@@ -141,18 +141,18 @@ const Home = () => {
           <p className=" text-center font-bold lg:text-4xl md:text-4xl text-3xl font-Kumbh">
             One Platform, Multiple Services
           </p>
-          <p className=" font-Kumbh text-center lg:text-2xl md:text-2xl text-xl w-[787px]">
+          <p className=" font-Kumbh text-center lg:text-2xl md:text-2xl text-xl lg:w-[787px]">
             Simplifying Human Resource Management, Your One-Stop Shop for HR
             Management
           </p>
         </div>
 
-        <div className=" flex justify-center mt-8">
+        <div className=" lg:flex md:grid grid justify-center mt-8">
           {/*  */}
-          <div className=" w-3/4">
+          <div className=" lg:w-3/4 md:w-full h-full">
             <img src={require("../assets/Group7.png")} alt="" />
 
-            <div className=" flex justify-between">
+            <div className=" lg:flex md:flex grid justify-between">
               {/*  */}
               <div className=" w-60 space-y-5">
                 <div className=" grid justify-center items-center ">
@@ -171,7 +171,7 @@ const Home = () => {
                 </p>
               </div>
               {/*  */}
-              <div className=" w-72 space-y-5 mt-36">
+              <div className=" w-72 space-y-5 lg:mt-36 md:mt-10 mt-10">
                 <div className=" grid justify-center items-center ">
                   <img
                     className=" w-36 h-36"
@@ -190,7 +190,7 @@ const Home = () => {
                 </div>
               </div>
               {/*  */}
-              <div className=" w-72 space-y-5 mt-28">
+              <div className=" w-72 space-y-5 lg:mt-28 md:mt-10 mt-10">
                 <div className=" grid justify-center items-center ">
                   <img
                     className=" w-36 h-36"
@@ -210,7 +210,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className=" w-1/3 grid justify-center ">
+          <div className=" lg:w-1/3 md:w-full w-full grid justify-center  lg:mt-0 md:mt-10 mt-10 ">
             <div className=" w-60 space-y-5">
               <div className=" grid justify-center items-center ">
                 <img
@@ -227,7 +227,7 @@ const Home = () => {
                 industry.{" "}
               </p>
             </div>
-            <div className=" w-60 space-y-5 lg:relative lg:top-[-100px]">
+            <div className=" w-60 space-y-5 lg:relative lg:top-[-100px] lg:mt-0 md:mt-10 mt-10">
               <div className=" grid justify-center items-center ">
                 <img
                   className=" w-36 h-36"
@@ -259,28 +259,91 @@ const Home = () => {
         }}
         className=" flex justify-center pt-16 "
       >
-        <div className="lg:px-24 md:px-10 px-8">
+        <div
+          className="lg:px-24 md:px-10 px-8 lg:flex md:grid grid gap-20
+        "
+        >
           {" "}
-          <div className=" w-2/5">
-            <div>
-              <p className=" lg:text-4xl md:text-4xl text-3xl font-bold Satoshi">
-                What They Say?
-              </p>
-              <div className=" flex justify-end pr-10">
+          <div className=" lg:w-2/5 md:w-full w-full mt-10 ">
+            <p className=" lg:text-4xl md:text-4xl text-3xl font-bold Satoshi">
+              What They Say?
+            </p>
+            <div className=" flex justify-end pr-20">
+              <img
+                className=" w-[237.97px] h-[40.67px]"
+                src={require("../assets/Group22.png")}
+                alt=""
+              />
+            </div>
+            <p className=" pr-32 font-Nunito text-[#696984] font-light text-base mt-5 ">
+              From onboarding to performance management, our HRMS covers it all.
+              It's a comprehensive solution that meets all our HR needs. Here
+              what our clients have to say.
+            </p>
+
+            <div className=" relative flex items-center mt-24">
+              <button className=" w-[403px] h-20 rounded-full text-base font-Nunito text-[#000] border-[#5608D4] border">
+                Write a testimonial
+              </button>
+              <img
+                className=" w-20 h-20 absolute right-0"
+                src={require("../assets/Group32.png")}
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="lg:w-3/5 md:w-full w-full">
+            <div className=" grid  items-end relative">
+              <div className="">
                 <img
-                  className=" w-[257.97px] h-[47.67px]"
-                  src={require("../assets/Group22.png")}
+                  className=" w-[306px]"
+                  src={require("../assets/testi.png")}
                   alt=""
                 />
               </div>
-              <p>
-                From onboarding to performance management, our HRMS covers it
-                all. It's a comprehensive solution that meets all our HR needs.
-                Here what our clients have to say.
-              </p>
+              <div className=" absolute  ml-16 bottom-[-90px]">
+                {/* <div className=" flex justify-end">
+                  <div className=" rounded-full bg-black h-16 w-16"></div>
+                </div> */}
+                <div className=" bg-[#5608D4] pl-2 w-[455px] rounded-lg">
+                  <div className=" bg-white shadow-lg p-5 rounded-r-lg">
+                    <div className=" flex gap-5">
+                      <img
+                        className=" h-24"
+                        src={require("../assets/Line 3.png")}
+                        alt=""
+                      />
+                      <p className=" font-Nunito text-base text-[#5F5F7E]">
+                        From onboarding to performance management, CeHR has
+                        revolutionized how we handle HR tasks. It's efficient,
+                        effective, and has simplified our HR processes immensely
+                      </p>
+                    </div>
+                    <div className=" flex items-center justify-between pl-5 mt-5">
+                      <div className=" w-52">
+                        <p className=" text-[#5F5F7E] text-lg font-thin">
+                          Debbie Ann
+                        </p>
+                        <p className=" font-Nunito font-semibold text-base text-[#5F5F7E]">
+                          CEO, Remam Limited
+                        </p>
+                      </div>
+                      <div className="w-52 grid justify-end gap-1 ">
+                        <img
+                          className=" w-28 h-5 "
+                          src={require("../assets/star.png")}
+                          alt=""
+                        />
+                        <p className=" font-thin text-[#80819A] font-Nunito text-base">
+                          12 reviews at Yelp
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className=" w-3/5"></div>
         </div>
       </div>
     </div>
