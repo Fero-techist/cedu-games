@@ -5,6 +5,7 @@ import Frame from "../assets/hero.png";
 import Frames from "../assets/Frame92.png";
 import OurClients from "../components/our-clients/OurClients";
 import Img from "../assets/Frame427319160.png";
+import work from "../assets/your-work.png";
 
 const Home = () => {
   // useEffect(() => {
@@ -345,6 +346,32 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        className=" bg-no-repeat bg-cover mt-32 mb-10 px-44"
+        style={{
+          backgroundImage: `url(${work})`,
+        }}
+      >
+        <div className=" grid justify-center pt-28 ">
+          <p className=" text-center font-Kumbh text-5xl text-[#fff] font-bold">
+            Streamline Your HR Processes with Ease
+          </p>
+          <div className=" flex justify-end">
+            <img
+              className=" w-72 h-5"
+              src={require("../assets/Elementwhite.png")}
+              alt=""
+            />
+          </div>
+        </div>
+        <p className=" text-sm font-Kumbh text-white text-center">
+          Lorem ipsum dolor sit amet consectetur. Purus in suspendisse in
+          aliquet massa in at. Amet nunc in tortor augue pellentesque urna magna
+          congue. Ac tempor lacus blandit tincidunt quis sapien. Elit in
+          venenatis urna lorem lacus lacus in aenean ut aliquet magna.
+        </p>
       </div>
     </div>
   );
