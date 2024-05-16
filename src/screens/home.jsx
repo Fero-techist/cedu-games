@@ -4,6 +4,7 @@ import Navbar from "../components/navbar/Navbar";
 import Frame from "../assets/hero.png";
 import Frames from "../assets/Frame92.png";
 import OurClients from "../components/our-clients/OurClients";
+import Img from "../assets/Frame427319160.png";
 
 const Home = () => {
   // useEffect(() => {
@@ -248,6 +249,38 @@ const Home = () => {
           <button className=" border border-[#5608D4] w-64 h-16 mt-10 rounded-full text-[See more features] font-Nunito text-base">
             See more features
           </button>
+        </div>
+      </div>
+
+      {/* Testimonial */}
+      <div
+        style={{
+          backgroundImage: `url(${Img})`,
+        }}
+        className=" flex justify-center pt-16 "
+      >
+        <div className="lg:px-24 md:px-10 px-8">
+          {" "}
+          <div className=" w-2/5">
+            <div>
+              <p className=" lg:text-4xl md:text-4xl text-3xl font-bold Satoshi">
+                What They Say?
+              </p>
+              <div className=" flex justify-end pr-10">
+                <img
+                  className=" w-[257.97px] h-[47.67px]"
+                  src={require("../assets/Group22.png")}
+                  alt=""
+                />
+              </div>
+              <p>
+                From onboarding to performance management, our HRMS covers it
+                all. It's a comprehensive solution that meets all our HR needs.
+                Here what our clients have to say.
+              </p>
+            </div>
+          </div>
+          <div className=" w-3/5"></div>
         </div>
       </div>
     </div>
