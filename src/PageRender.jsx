@@ -8,7 +8,14 @@ import useAuthStore from "./data/Stores/Authstore";
 const PageRender = () => {
   // Retrieve page, id, and step from URL params
   const { page, id, step } = useParams();
-  const escape2 = ["home", "about", "our-team", "contact-us", "sign-up"];
+  const escape2 = [
+    "institutionPage",
+    "instructorPage",
+    "about",
+    "our-team",
+    "contact-us",
+    "sign-up",
+  ];
   const navigate = useNavigate();
 
   // Use the useAuthStore hook to access authentication-related state
@@ -29,7 +36,7 @@ const PageRender = () => {
 
   useEffect(() => {
     // Redirect to the homepage if the user is not authenticated
-    if (!auth?.isAuth) {
+    if (auth?.isAuth) {
       if (errors?.errorText) {
         if (page !== "login" && page !== "register") {
           navigate("/");
@@ -53,7 +60,9 @@ const PageRender = () => {
   } else if (id) {
     if (
       (page === "home" && escape2.includes(id)) ||
-      (page === "dashboard" && escape2.includes(id))
+      (page === "dashboard" && escape2.includes(id)) ||
+      (page === "institution" && escape2.includes(id)) ||
+      (page === "instructor" && escape2.includes(id))
     ) {
       pageName = `${page}/${id}`;
     } else {
@@ -62,9 +71,13 @@ const PageRender = () => {
   } else {
     pageName = `${page}`;
   }
+  console.log({ isAuth });
 
   // Call generatePage with the constructed pageName and determine the folder based on user authentication status
-  return generatePage(pageName, isAuth ? "pages" : "screens");
+  return generatePage(
+    pageName,
+    isAuth || page !== "login" ? "pages" : "screens"
+  );
 };
 
 export default PageRender;

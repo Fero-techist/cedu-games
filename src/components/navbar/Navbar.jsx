@@ -1,70 +1,47 @@
-import React, { useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { MdSearch } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import navImg from "../../assets/Ellipse 37.png";
 
 const Navbar = () => {
-  const [isToggle, setIsToggle] = useState(false);
+  const navigate = useNavigate();
 
-  const handleToggle = () => {
-    setIsToggle(!isToggle);
-  };
-  const closeTggle = () => {
-    setIsToggle(false);
-  };
+  function handleNotification() {
+    navigate("/notification");
+  }
+
+  const [search, setSearch] = useState("");
   return (
-    <div className=" flex items-center justify-between lg:px-24 md:px-10 px-8 py-4 bg-white">
-      <div>
-        <img
-          className=" w-12 h-12"
-          src={require("../../assets/Logo.png")}
-          alt=""
-        />
-      </div>
-      <ul className=" lg:flex md:flex hidden items-center gap-10 ">
-        <Link to="/home" className=" Satoshi font-thin text-sm text-[#5608D4]">
-          Home
-        </Link>
-        <li className=" Satoshi font-thin text-sm text-[#000]">About Us</li>
-        <li className=" Satoshi font-thin text-sm text-[#000]">Solutions</li>
-        <li className=" Satoshi font-thin text-sm text-[#000]">Contact Us</li>
-        <li className=" Satoshi font-thin text-sm text-[#000]">Pricing</li>
-        <li className=" Satoshi font-thin text-sm text-[#000]">FAQs</li>
-      </ul>
-      <div className=" lg:flex md:hidden hidden items-center gap-5">
-        <button className=" text-base Satoshi text-[#000]   ">Login</button>
-        <button className=" bg-gradient-to-b from-[#5608D4] to-[#384295] w-40 h-12 rounded-xl font-Nunito text-sm text-white">
-          Request for a demo
-        </button>
-      </div>
-      <div className=" lg:hidden md:block block">
-        <GiHamburgerMenu onClick={handleToggle} />
-      </div>
-      {isToggle && (
-        <div className=" grid absolute z-30 top-20 bg-gradient-to-b from-[#5608D4] to-[#384295] w-full p-5 space-y-10 ">
-          <ul className=" lg:hidden md:hidden grid items-center gap-5">
-            <Link to="/home" className=" Satoshi font-thin text-sm text-[#fff]">
-              Home
-            </Link>
-            <li className=" Satoshi font-thin text-sm text-[#fff]">About Us</li>
-            <li className=" Satoshi font-thin text-sm text-[#fff]">
-              Solutions
-            </li>
-            <li className=" Satoshi font-thin text-sm text-[#fff]">
-              Contact Us
-            </li>
-            <li className=" Satoshi font-thin text-sm text-[#fff]">Pricing</li>
-            <li className=" Satoshi font-thin text-sm text-[#fff]">FAQs</li>
-          </ul>
-
-          <div className=" flex gap-5">
-            <button className=" text-base Satoshi text-[#fff]   ">Login</button>
-            <button className=" bg-[#fff] text-[#384295] w-40 h-12 rounded-xl font-Nunito text-sm ">
-              Request for a demo
-            </button>
+    <>
+      <div className="container flex items-center justify-between">
+        <div className="flex sticky w-full z-10 my-4 top-0 justify-between items-center">
+          <div className="flex px-4 border rounded-xl w-full border-[#CCCCCCCC] my-2 h-16 items-center">
+            <MdSearch
+              size={20}
+              className="text-[#A7A7A7]"
+            />
+            <input
+              type="text"
+              value={search}
+              onChange={(ev) => setSearch(ev.target.value)}
+              placeholder="Search your course here..."
+              className="w-full  text-sm p-2 focus:outline-none focus:border-purple text-[#A7A7A7]"
+            />
           </div>
         </div>
-      )}
-    </div>
+
+        <div
+          className="p-2 rounded-full cursor-pointer"
+          onClick={handleNotification}
+        >
+          <img
+            className=" w-14"
+            src={navImg}
+            alt="navImg"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
