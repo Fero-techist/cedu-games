@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { RedBtn, RoundedBtn } from "../../components/button.jsx/Btn";
-import { Modal, InviteModal, SuccessModal } from "../../components/modal";
+import {
+  Modal,
+  InviteModal,
+  SuccessfulDelete,
+  DeleteItem,
+} from "../../components/modal";
 import guardianImg from "../../assets/guardiantwo.png";
 import courseImg from "../../assets/Leadership.png";
 import { CourseCard } from "../../components/card";
@@ -9,6 +14,10 @@ const Guardianpage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openSuccessfulDeleteModal, setOpenSuccessfulDeleteModal] =
+    useState(false);
+
   const [inviteEmail, setInviteEmail] = useState("");
   const user = {
     name: "Hannah B.Joseph",
@@ -25,6 +34,17 @@ const Guardianpage = () => {
     setIsInviteModalOpen(true);
   };
 
+  const handleDeleteguardian = () => {
+    setOpenDeleteModal(true);
+  };
+
+  const cancelModal = () => setOpenDeleteModal(false);
+
+  const confirmDelete = () => {
+    setOpenDeleteModal(false);
+    setOpenSuccessfulDeleteModal(true);
+  };
+
   const closeInviteModal = () => setIsInviteModalOpen(false);
 
   // Success Modal
@@ -32,6 +52,10 @@ const Guardianpage = () => {
     ev.preventDefault();
     setIsInviteModalOpen(false);
     setIsSuccessModalOpen(true);
+  };
+
+  const closeSuccessfulDeleteModal = () => {
+    setOpenSuccessfulDeleteModal(false);
   };
 
   // const closeSuccessModal = () => setIsSuccessModalOpen(false);
@@ -46,7 +70,7 @@ const Guardianpage = () => {
         <div className=" mb-6 bg-[#DDD3FF] p-4 rounded-md w-full h-[156px]">
           {/* Add Parent Button */}
           <div className="float-right">
-            <RedBtn onClick={openInviteModal}>Add parent</RedBtn>
+            <RedBtn onClick={handleDeleteguardian}>Delete guardian</RedBtn>
           </div>
 
           {/* Invite Modal */}
@@ -92,10 +116,40 @@ const Guardianpage = () => {
             </div>
           </InviteModal>
 
+          <DeleteItem
+            isOpen={openDeleteModal}
+            onClose={cancelModal}
+          >
+            <div>
+              <h1 className="text-[20px] text-[#400167] font-bold">
+                Delete Item?
+              </h1>
+              <p className="text-[14px] my-3">
+                Are you sure you want to delete ‘Item’? Action can not be
+                reversed.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 mt-3">
+              <button
+                className="bg-[#5002D0] text-white text-[16px] font-medium py-3 px-4 rounded-lg w-[102px]"
+                onClick={confirmDelete}
+              >
+                Continue
+              </button>
+              <button
+                className="text-[16px] font-medium py-3 px-4 rounded-lg w-[87px] text-[#E34033]"
+                style={{ backgroundColor: "rgba(227, 64, 51, 0.2)" }}
+                onClick={cancelModal}
+              >
+                Cancel
+              </button>
+            </div>
+          </DeleteItem>
+
           {/* Success Modal */}
-          <SuccessModal
-            isOpen={isSuccessModalOpen}
-            onClose={closeSuccessModal}
+          <SuccessfulDelete
+            isOpen={openSuccessfulDeleteModal}
+            onClose={closeSuccessfulDeleteModal}
           />
 
           {/* User Details */}
