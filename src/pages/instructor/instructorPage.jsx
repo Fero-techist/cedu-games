@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Btn, RoundedBtn } from "../../components/button.jsx/Btn";
-import { Modal, InviteModal, SuccessModal } from "../../components/modal";
+import { SuccessfulDelete, DeleteItem } from "../../components/modal";
 import caristasImage from "../../assets/Ellipse 38 (1).png";
 import courseImg from "../../assets/Leadership.png";
+import verifyDel from "../../assets/verifyDel.png";
 import { CourseCard } from "../../components/card";
+import { useNavigate } from "react-router-dom";
 
 const InstructorPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openSuccessfulDeleteModal, setOpenSuccessfulDeleteModal] = useState();
   const [inviteEmail, setInviteEmail] = useState("");
   const user = {
     name: "James Brown",
@@ -90,85 +92,29 @@ const InstructorPage = () => {
     },
   ];
 
-  // Open Invite Modal
-  const openInviteModal = () => {
-    setIsModalOpen(false);
-    setIsInviteModalOpen(true);
+  const handleDeleteUser = () => {
+    setOpenDeleteModal(true);
   };
 
-  const closeInviteModal = () => setIsInviteModalOpen(false);
+  const cancelModal = () => setOpenDeleteModal(false);
 
-  // Success Modal
-  const handleInviteSubmit = (ev) => {
-    ev.preventDefault();
-    setIsInviteModalOpen(false);
-    setIsSuccessModalOpen(true);
+  const confirmDelete = () => {
+    setOpenDeleteModal(false);
+    setOpenSuccessfulDeleteModal(true);
   };
 
-  // const closeSuccessModal = () => setIsSuccessModalOpen(false);
+  const closeSuccessfulDeleteModal = () => {
+    setOpenSuccessfulDeleteModal(false);
+  };
 
-  const closeSuccessModal = () => setIsSuccessModalOpen(false);
   return (
     <div>
-      <div className="p-6 m-3">
+      <p className=" font-satoshi py-2">All Instructors</p>
+      <div className="p-4 m-3">
         <h1 className="font-[700] font-satoshi text-[#400167] text-[20px] leading-[30px] mb-6 ">
           {user.name} Details
         </h1>
         <div className=" mb-6 bg-[#DDD3FF] p-4 rounded-md w-full h-[156px]">
-          {/* Add Parent Button */}
-          <div className="float-right">
-            <Btn onClick={openInviteModal}>Add parent</Btn>
-          </div>
-
-          {/* Invite Modal */}
-          <InviteModal
-            isOpen={isInviteModalOpen}
-            onClose={closeInviteModal}
-          >
-            <div className="my-10">
-              <div className="text-center">
-                <h1 className="text-[#000000] text-[20px]  font-satoshi leading-[27px] font-[900] mb-2">
-                  Invite User to CELMA
-                </h1>
-                <p className="font-[500] text-[14px] text-[#0B2239] leading-[18.9px] font-satoshi">
-                  Login details will be sent to user
-                </p>
-              </div>
-              <form
-                className="my-12"
-                onSubmit={handleInviteSubmit}
-              >
-                <label
-                  htmlFor="invite-email"
-                  className="block mb-2 font-[500] text-[14px] text-[#0B2239] leading-[18.9px] font-satosh"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="invite-email"
-                  value={inviteEmail}
-                  onChange={(ev) => setInviteEmail(ev.target.value)}
-                  className="w-full p-2  rounded-lg focus:outline-none border-0 bg-[#F3F5F5] py-[16px]"
-                />
-                <div className="mt-4 flex justify-center">
-                  <RoundedBtn
-                    type="submit"
-                    className="font-[700] font-satoshi  leading-[21.6px] w-full rounded-full text-white py-[16px] bg-[#5002D0]  h-[60px] mt-10 text-[16px] "
-                  >
-                    <span>Invite User</span>
-                  </RoundedBtn>
-                </div>
-              </form>
-            </div>
-          </InviteModal>
-
-          {/* Success Modal */}
-          <SuccessModal
-            isOpen={isSuccessModalOpen}
-            onClose={closeSuccessModal}
-          />
-
           {/* User Details */}
           <div className="flex mt-5">
             <div>
@@ -186,11 +132,6 @@ const InstructorPage = () => {
                   </h2>
                   <p className="text-black">{user.email}</p>
                 </div>
-                <div>
-                  <button className="bg-[#f7ada880]  text-[#e33f33] py-[10px] px-[18px] rounded-[10px] font-[500] text-[16px] leading-[20px] mr-2 self-end">
-                    Delete User
-                  </button>
-                </div>
               </div>
               <p className="text-[12px] font-[300] w-[413px] font-satoshi leading-[19.62px] mt-3 text-black">
                 Lorem ipsum dolor sit amet consectetur. Non turpis risus rhoncus
@@ -202,7 +143,7 @@ const InstructorPage = () => {
         </div>
         {/* User Stats */}
         <h3 className="text-[20px] text-[#013467] font-semibold mb-4 leading-[23px]">
-          Institution Overview
+          Overview
         </h3>
 
         {/* User Stats */}
@@ -261,7 +202,9 @@ const InstructorPage = () => {
         </div>
 
         <div>
-          <header className="flex justify-between items-center py-4"></header>
+          <header className="flex justify-between items-center py-4">
+            All Lessons
+          </header>
           <div className="grid grid-cols-4 gap-2 px-4">
             {courses.map((course, index) => (
               <CourseCard
@@ -271,74 +214,67 @@ const InstructorPage = () => {
             ))}
           </div>
 
-          <button className="bg-[#f7ada880]  text-[#e33f33] py-[10px] px-[18px] rounded-[10px] font-[500] text-[16px] leading-[20px] mr-2 self-end">
+          <button
+            onClick={handleDeleteUser}
+            className="bg-[#f7ada880]  text-[#e33f33] py-[10px] px-[18px] rounded-[10px] font-[500] text-[16px] leading-[20px] mr-2 self-end"
+          >
             Delete User
           </button>
         </div>
 
-        {/*  */}
-        {/* <div className="mt-8">
-          <h3 className="text-lg font-semibold mb-4">All Lessons</h3>
-          <div className="bg-white p-4 border border-[rgba(1, 52, 103, 0.3)] rounded-lg h-[394px]">
-            <table className="min-w-full">
-              <thead className="my-4">
-                <tr>
-                  <th className="text-left text-[16px] leading-[20px] p-2 font-satoshi font-semibold">
-                    Subject
-                  </th>
-                  <th className="text-left text-[16px] leading-[20px] p-2 font-satoshi font-semibold">
-                    Progress
-                  </th>
-                  <th className="text-left text-[16px] leading-[20px] p-2 font-satoshi font-semibold">
-                    Total Topics
-                  </th>
-                  <th className="text-left text-[16px] leading-[20px] p-2 font-satoshi font-semibold">
-                    Status
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="mt-8">
-                {user.lessons.map((lesson, index) => (
-                  <tr
-                    key={index}
-                    className="bg-white"
-                  >
-                    <td className="p-2">
-                      <div className="mb-4 font-regular font-satoshi">
-                        {lesson.subject}
-                      </div>
-                    </td>
-                    <td className="p-2">
-                      <div className="mb-4 font-regular font-satoshi">
-                        {lesson.progress}%
-                      </div>
-                    </td>
-                    <td className="p-2">
-                      <div className="mb-4 font-regular font-satoshi">
-                        {lesson.totalTopics}
-                      </div>
-                    </td>
-                    <td className="p-2">
-                      <div className="mb-4 font-regular font-satoshi">
-                        <span
-                          className={`${
-                            lesson.status === "In Progress"
-                              ? "text-orange-500"
-                              : lesson.status === "Completed"
-                              ? "text-green-500"
-                              : "text-blue-500"
-                          }`}
-                        >
-                          {lesson.status}
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <DeleteItem
+          isOpen={openDeleteModal}
+          onClose={cancelModal}
+        >
+          <div>
+            <h1 className="text-[20px] text-[#400167] font-bold">
+              Delete Item?
+            </h1>
+            <p className="text-[14px] my-3">
+              Are you sure you want to delete ‘Item’? Action can not be
+              reversed.
+            </p>
           </div>
-        </div> */}
+          <div className="flex items-center gap-4 mt-3">
+            <button
+              className="bg-[#5002D0] text-white text-[16px] font-medium py-3 px-4 rounded-lg w-[102px]"
+              onClick={confirmDelete}
+            >
+              Continue
+            </button>
+            <button
+              className="text-[16px] font-medium py-3 px-4 rounded-lg w-[87px] text-[#E34033]"
+              style={{ backgroundColor: "rgba(227, 64, 51, 0.2)" }}
+              onClick={cancelModal}
+            >
+              Cancel
+            </button>
+          </div>
+        </DeleteItem>
+
+        <SuccessfulDelete
+          isOpen={openSuccessfulDeleteModal}
+          onClose={closeSuccessfulDeleteModal}
+        >
+          <div>
+            <div>
+              <img
+                src={verifyDel}
+                alt="verifyDelete logo"
+                className=" w-20"
+              />
+            </div>
+
+            <div className="mt-10">
+              <h2 className="text-[#400167] text-[20px] leading-[27px] font-bold mb-2">
+                Item Deleted
+              </h2>
+              <p className="text-[#74777B] text-[14px] leading-[18.9px]">
+                `Item name` has been deleted successfully
+              </p>
+            </div>
+          </div>
+        </SuccessfulDelete>
       </div>
     </div>
   );

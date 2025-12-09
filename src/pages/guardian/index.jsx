@@ -9,6 +9,7 @@ import { Modal, InviteModal, SuccessModal } from "../../components/modal";
 export default function GuardianTable(params) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("Guardian");
+  const [inviteEmail, setInviteEmail] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -153,6 +154,57 @@ export default function GuardianTable(params) {
             </div>
           </div>
         </Modal>
+
+        <div>
+          {/* Invite Modal */}
+          <InviteModal
+            isOpen={isInviteModalOpen}
+            onClose={closeInviteModal}
+          >
+            <div className="my-10">
+              <div className="text-center">
+                <h1 className="text-[#000000] text-[20px]  font-satoshi leading-[27px] font-[900] mb-2">
+                  Invite User to CELMA
+                </h1>
+                <p className="font-[500] text-[14px] text-[#0B2239] leading-[18.9px] font-satoshi">
+                  Login details will be sent to user
+                </p>
+              </div>
+              <form
+                className="my-12"
+                onSubmit={handleInviteSubmit}
+              >
+                <label
+                  htmlFor="invite-email"
+                  className="block mb-2 font-[500] text-[14px] text-[#0B2239] leading-[18.9px] font-satosh"
+                >
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="invite-email"
+                  value={inviteEmail}
+                  onChange={(ev) => setInviteEmail(ev.target.value)}
+                  className="w-full p-2  rounded-lg focus:outline-none border-0 bg-[#F3F5F5] py-[16px]"
+                />
+                <div className="mt-4 flex justify-center">
+                  <RoundedBtn
+                    type="submit"
+                    className="font-[700] font-satoshi text-[16px] leading-[21.6px]"
+                  >
+                    Invite User
+                  </RoundedBtn>
+                </div>
+              </form>
+            </div>
+          </InviteModal>
+
+          {/* Success Modal */}
+          <SuccessModal
+            isOpen={isSuccessModalOpen}
+            onClose={closeSuccessModal}
+          />
+        </div>
       </div>
 
       <Table

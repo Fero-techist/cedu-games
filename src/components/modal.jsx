@@ -96,7 +96,7 @@ export function DeleteItem({ isOpen, onClose, children }) {
   );
 }
 
-export function SuccessfulDelete({ isOpen, onClose }) {
+export function SuccessfulDelete({ isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   return (
@@ -109,14 +109,7 @@ export function SuccessfulDelete({ isOpen, onClose }) {
           &times;
         </button>
 
-        <div className="mt-10">
-          <h2 className="text-[#400167] text-[20px] leading-[27px] font-bold mb-2">
-            Item Deleted
-          </h2>
-          <p className="text-[#74777B] text-[14px] leading-[18.9px]">
-            `Item name` has been deleted successfully
-          </p>
-        </div>
+        {children}
       </div>
     </div>
   );
