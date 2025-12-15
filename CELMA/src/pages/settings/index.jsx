@@ -1,104 +1,138 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import galleryImg from "../../assets/gallery-add.png";
-// import AccountSetting from "../../components/account-setting/account-setting";
+import banner from "../../assets/settin.png";
+import admin from "../../assets/admin.png";
 
-const Settings = () => {
+export default function AccountProfile() {
+  const [activeTab, setActiveTab] = React.useState("Update Profile");
+
+  const tabs = [
+    "Update Profile",
+    "Update Password",
+    "Leaderboard Settings",
+    "Badge Settings",
+    "Other Settings",
+  ];
+
   return (
-    <div>
-      <div className="p-8 w-full text-sm font-Nunito shadow-lg mx-auto">
-        <p className=" py-4">Settings</p>
+    <div className="w-full max-w-7xl mx-auto min-h-screen bg-gray-50 p-6 font-Outfit">
+      <h2 className="text-xl font-semibold mb-4">Account Profile</h2>
 
-        {/* Tabs */}
-        <div className="flex space-x-6 border-b pb-2">
-          <button className="text-[#400167] font-semibold border-[#400167]">
-            Account Setting
-          </button>
-          <Link
-            to="/settings/LoginSecurity"
-            className="text-gray-500 hover:text-[#400167]"
+      <div className="flex items-center font-bold gap-6 border-b pb-2 text-sm">
+        {tabs.map((item) => (
+          <button
+            key={item}
+            onClick={() => setActiveTab(item)}
+            className={`pb-2 transition-all duration-200 ${
+              activeTab === item
+                ? "border-b-2 border-purple-500 text-purple-600"
+                : "text-gray-500 hover:text-purple-500"
+            }`}
           >
-            Login & Security
-          </Link>
-        </div>
+            {item}
+          </button>
+        ))}
+      </div>
 
-        {/* Profile Picture Upload */}
-        <div className="mt-6">
-          <p className="font-semibold py-2">Your Profile Picture</p>
+      {activeTab === "Update Profile" && (
+        <div className="mt-6  rounded-xl shadow-sm p-4">
+          <div className="relative w-full h-64 rounded-xl overflow-hidden">
+            <img
+              src={banner}
+              alt="cover"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-          <div className=" border-2 mb-6 grid justify-center items-center w-[130px] h-[130px] bg-[#E9E0EC] border-dotted rounded-[18px]">
-            <div className="">
+          <div className="flex justify-center -mt-16">
+            <div className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-md">
               <img
-                className=" w-10 h-10 grid justify-center items-center  mx-auto"
-                src={galleryImg}
-                alt="galleryImg"
+                src={admin}
+                alt="profile"
+                className="w-full h-full object-cover"
               />
-              <p className=" text-[#4C535F]  font-Nunito text-center">
-                Upload <br /> your photo
-              </p>
-            </div>
-          </div>
-
-          <hr className=" border-2 my-4" />
-        </div>
-
-        {/* Form */}
-        <div className="my-8 space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="">Full Name</label>
-              <input
-                className="p-3 bg-[#E9E0EC] outline-none w-full rounded"
-                placeholder="Please enter your full name"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="">Email</label>
-              <input
-                className="p-3 outline-white bg-[#E9E0EC] w-full rounded"
-                placeholder="Please enter your email"
-              />
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="">Username</label>
-              <input
-                className="p-3 bg-[#E9E0EC] outline-none w-full rounded"
-                placeholder="Please enter your username"
-              />
-            </div>
-            <div>
-              <label htmlFor="">Phone number</label>
-              <div className="flex">
-                <span className="p-3 bg-purple-100 outline-none rounded-l">
-                  +1
-                </span>
-                <input
-                  className="p-3 bg-[#E9E0EC] w-full rounded-r"
-                  placeholder="Please enter your phone number"
-                />
+              <div className="absolute bottom-2 right-2 bg-white p-1 rounded-full shadow cursor-pointer text-xs">
+                ✏️
               </div>
             </div>
           </div>
-          <label htmlFor="">Bio</label>
-          <textarea
-            className="w-full p-3 bg-[#E9E0EC] outline-none rounded h-32"
-            placeholder="Write your Bio here e.g your hobbies, interests ETC"
-          ></textarea>
-        </div>
 
-        {/* Buttons */}
-        <div className="mt-6 flex items-center space-x-4">
-          <button className="bg-[#400167] rounded-[8px] text-white px-6 py-2">
-            Update Profile
-          </button>
-          <button className="text-gray-500">Cancel</button>
+          <div className="mt-8 w-full grid gap-6">
+            <div className="max-w-xl">
+              <div>
+                <label className="text-sm text-gray-600">Profile Name</label>
+                <input className="w-full mt-1 p-3 border outline-none rounded-xl bg-gray-100" />
+              </div>
+
+              <div>
+                <label className="text-sm text-gray-600">Profile Email</label>
+                <input className="w-full mt-1 p-3 border outline-none rounded-xl bg-gray-100" />
+              </div>
+
+              <div>
+                <label className="text-sm text-gray-600">Role</label>
+                <input className="w-full mt-1 p-3 border outline-none rounded-xl bg-gray-100" />
+              </div>
+            </div>
+
+            <div className="flex justify-end">
+              <button className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded-xl shadow">
+                Save changes
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
+      {activeTab === "Update Password" && (
+        <div className="mt-6 rounded-xl shadow-sm p-6 text-center text-gray-600">
+          <form>
+            <label>Current Password</label>
+            <input
+              type="text"
+              placeholder="Current Password"
+            />
+
+            <div>
+              <label>New Password</label>
+              <input
+                type="text"
+                placeholder="New password "
+              />
+            </div>
+
+            <div>
+              <label>Confirm New Password</label>
+              <input
+                type="text"
+                placeholder="Confirm New Password"
+              />
+            </div>
+
+            <input
+              type="submit"
+              value="Update Password"
+            />
+          </form>
+        </div>
+      )}
+
+      {activeTab === "Leaderboard Settings" && (
+        <div className="mt-6 bg-white rounded-xl shadow-sm p-6 text-center text-gray-600">
+          Leaderboard Settings Page Coming Soon...
+        </div>
+      )}
+
+      {activeTab === "Badge Settings" && (
+        <div className="mt-6 bg-white rounded-xl shadow-sm p-6 text-center text-gray-600">
+          Badge Settings Page Coming Soon...
+        </div>
+      )}
+
+      {activeTab === "Other Settings" && (
+        <div className="mt-6 bg-white rounded-xl shadow-sm p-6 text-center text-gray-600">
+          Other Settings Page Coming Soon...
+        </div>
+      )}
     </div>
   );
-};
-
-export default Settings;
+}

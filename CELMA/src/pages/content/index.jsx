@@ -61,7 +61,7 @@ export default function QuestionsPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Questions</h1>
 
           <Link to="/content/add-question">
-            <button className="px-4 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition">
+            <button className="px-4 py-2 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition">
               Add Question
             </button>
           </Link>
@@ -118,9 +118,11 @@ export default function QuestionsPage() {
 
                   {/* ACTIONS */}
                   <td className="py-4 px-4 text-sm">
-                    <span className="text-purple-600 cursor-pointer hover:underline mr-3">
-                      Edit
-                    </span>
+                    <Link to="/content/edit-question">
+                      <span className="text-purple-600 cursor-pointer hover:underline mr-3">
+                        Edit
+                      </span>
+                    </Link>
                     <span className="text-red-500 cursor-pointer hover:underline">
                       Delete
                     </span>

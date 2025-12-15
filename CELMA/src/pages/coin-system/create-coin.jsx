@@ -3,7 +3,7 @@ import { SuccessModal } from "../../components/modal";
 import CTA from "../../assets/cta.png";
 import { FullBTN } from "../../components/button.jsx/Btn";
 
-const CreateCoinPackage = () => {
+const CreateCoinPackage = ({ onBack }) => {
   const [form, setForm] = useState({
     packageName: "",
     coins: "",
@@ -31,7 +31,10 @@ const CreateCoinPackage = () => {
 
   return (
     <div className="w-full min-h-screen px-4 py-10 bg-[#FAFAFA]">
-      {" "}
+      <div>
+        <button onClick={onBack}>Back</button>
+        {/* Edit form */}
+      </div>
       <h2 className="text-2xl font-semibold mb-10">Create Coin Package</h2>
       <form
         onSubmit={handleSubmit}

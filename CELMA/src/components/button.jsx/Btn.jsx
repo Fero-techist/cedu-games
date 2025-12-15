@@ -67,7 +67,7 @@ export function FullBTN({ children, onClick }) {
   return (
     <>
       <div
-        onClick={onclick}
+        onClick={onClick}
         className=" mx-auto justify-center flex items-center"
       >
         <button className=" bg-[#995BE2]  w-[304px]  text-white px-6 py-2 ">

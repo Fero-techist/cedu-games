@@ -1,3 +1,7 @@
+// import user from "../../assets/"
+import User from "../assets/user.png";
+import Level from "../assets/level.png";
+
 export default function RecentActivities() {
   const activities = [
     {
@@ -27,8 +31,8 @@ export default function RecentActivities() {
   ];
 
   const icons = {
-    user: "🟢",
-    level: "🟣",
+    user: User,
+    level: Level,
   };
 
   return (
@@ -41,7 +45,13 @@ export default function RecentActivities() {
             key={idx}
             className="flex items-start gap-3"
           >
-            <span className="text-xl">{icons[a.type]}</span>
+            {/* <span className="text-xl">{icons[a.type]}</span> */}
+            <img
+              src={icons[a.type]}
+              className="w-8 "
+              alt=""
+            />
+
             <div>
               <p className="font-medium">{a.text}</p>
               <p className="text-sm text-gray-600">{a.detail}</p>
