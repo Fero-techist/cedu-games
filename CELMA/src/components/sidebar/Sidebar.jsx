@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaCog, FaSignOutAlt, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import cephasGameLogo from "../../assets/sidebarlogo.png";
+import CEDUGAMES from "../../assets/CEDUGAMES.png";
 import {
   FaUserGraduate,
   FaBook,
@@ -26,10 +26,10 @@ const Sidebar = ({ children, onSelectPage }) => {
     { to: "/content", label: "Content", icon: <FaBook /> },
     { to: "/leaderboard", label: "Leaderboard", icon: <FaChartLine /> },
     { to: "/coin-system", label: "Coin System", icon: <FaSchool /> },
-    { to: "/notifications", label: "Categories/Levels", icon: <FaTrophy /> },
-    { to: "/student", label: "Notifications", icon: <FaChartLine /> },
-    { to: "/guardian", label: "Settings", icon: <FaSchool /> },
-    { to: "/notifications", label: "Log Out", icon: <FaTrophy /> },
+    { to: "/categories", label: "Categories/Levels", icon: <FaTrophy /> },
+    { to: "/notifications", label: "Notifications", icon: <FaChartLine /> },
+    { to: "/settings", label: "Settings", icon: <FaSchool /> },
+    { to: "/  ", label: "Log Out", icon: <FaTrophy /> },
   ];
 
   return (
@@ -54,10 +54,10 @@ const Sidebar = ({ children, onSelectPage }) => {
           </button>
           <div>
             <Link to="/home">
-              <div className="">
+              <div className=" mt-20">
                 <img
-                  className="w-full h-full"
-                  src={cephasGameLogo}
+                  className=" w-48"
+                  src={CEDUGAMES}
                   alt="Logo"
                 />
               </div>

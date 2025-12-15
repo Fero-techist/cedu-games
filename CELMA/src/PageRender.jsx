@@ -18,7 +18,12 @@ const PageRender = () => {
     "leaderboard-details",
     "manage-user",
     "add-question",
+    "edit-question",
     "upload-files",
+    "edit-age-group",
+    "add-age-group",
+    "new-notification",
+    "view-notification",
   ];
   const navigate = useNavigate();
 
@@ -68,7 +73,9 @@ const PageRender = () => {
       (page === "leaderboard" && escape2.includes(id)) ||
       (page === "user-management" && escape2.includes(id)) ||
       (page === "content" && escape2.includes(id)) ||
-      (page === "coin-system" && escape2.includes(id))
+      (page === "coin-system" && escape2.includes(id)) ||
+      (page === "categories" && escape2.includes(id)) ||
+      (page === "notifications" && escape2.includes(id))
     ) {
       pageName = `${page}/${id}`;
     } else {

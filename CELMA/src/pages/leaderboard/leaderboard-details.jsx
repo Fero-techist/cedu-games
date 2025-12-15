@@ -94,7 +94,8 @@ const UserDetails = ({ userId = 1 }) => {
   ];
 
   return (
-    <div className="w-full  mx-auto p-6  rounded-lg">
+    <div className="w-full max-w-7xl  mx-auto p-6  rounded-lg">
+      <p className=" text-2xl font-bold mb-4">User Leaderboard Details </p>
       <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-200">
         <div className="w-40 h-40 rounded-full bg-purple-300 flex items-center justify-center text-4xl">
           <img
@@ -113,7 +114,6 @@ const UserDetails = ({ userId = 1 }) => {
         </div>
       </div>
 
-      {/* Game Levels Completed Section */}
       <div className="mb-8">
         <h2 className="text-xl font-bold text-gray-900 mb-4">
           Game Levels Completed
